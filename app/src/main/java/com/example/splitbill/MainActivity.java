@@ -20,13 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn_started1;
 
-    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_main);
 
         btn_started1 = findViewById(R.id.bt_started);
 

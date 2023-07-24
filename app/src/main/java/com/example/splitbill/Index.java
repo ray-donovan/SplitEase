@@ -66,6 +66,7 @@ public class Index extends AppCompatActivity {
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

@@ -27,8 +27,8 @@ public class EqualFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_equal, container, false);
 
-        Typeface SFPRO = Typeface.createFromAsset(tv_equalText.getContext().getAssets(), "fonts/SFPRO.ttf");
-        Typeface SFBOLD = Typeface.createFromAsset(tv_equalText.getContext().getAssets(), "fonts/SFPRO-Bold.ttf");
+        Typeface SFPRO = Typeface.createFromAsset(view.getContext().getAssets(), "fonts/SFPRO.ttf");
+        Typeface SFBOLD = Typeface.createFromAsset(view.getContext().getAssets(), "fonts/SFPRO-Bold.ttf");
 
         tv_equalText = view.findViewById(R.id.tv_equalText);
         tv_equalAmount = view.findViewById(R.id.tv_equalAmount);
