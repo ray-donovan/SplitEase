@@ -11,16 +11,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.splitbill.databinding.ActivityIndexBinding;
-import com.example.splitbill.databinding.ActivityMainBinding;
-
 import java.lang.reflect.Type;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_started1;
 
-
+    //Introductory page of the application
+    //User has to click "Get Started" button to start splitting bill
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

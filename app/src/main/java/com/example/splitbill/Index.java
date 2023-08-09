@@ -1,5 +1,6 @@
 package com.example.splitbill;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -28,6 +29,10 @@ public class Index extends AppCompatActivity {
     TextView tv_equal, tv_custom;
     Switch modeSwitch;
 
+    Fragment equalFragment = new EqualFragment();
+    Fragment customFragment = new CustomFragment();
+
+    //This index class allows user to go to either equal page or the custom break-down page
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,26 +48,39 @@ public class Index extends AppCompatActivity {
         tv_custom.setTypeface(SFPRO);
         tv_equal.setTypeface(SFBOLD);
 
+        //Equal fragment will be shown by default at every startup of the application
+        if (savedInstanceState == null){
+            replaceFragment(equalFragment);
+        }
+
+        //A switch button between Equal & Custom breakdown
         modeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
+                    //Show custom breakdown fragment
                     tv_equal.setTextColor(ResourcesCompat.getColor(getResources(), R.color.dark_grey, null));
                     tv_custom.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                     tv_equal.setTypeface(SFPRO);
                     tv_custom.setTypeface(SFBOLD);
-                    replaceFragment(new CustomFragment());
+                    if (customFragment.isAdded()){
+
+                    } else{
+                        replaceFragment(customFragment);
+                    }
                 } else{
+                    //Show equal breakdown fragment
                     tv_equal.setTextColor(ResourcesCompat.getColor(getResources(), R.color.white, null));
                     tv_custom.setTextColor(ResourcesCompat.getColor(getResources(), R.color.dark_grey, null));
                     tv_equal.setTypeface(SFBOLD);
                     tv_custom.setTypeface(SFPRO);
-                    replaceFragment(new EqualFragment());
+                        replaceFragment(equalFragment);
                 }
             }
         });
     }
 
+    //Function to replace/show the fragment
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -80,5 +98,10 @@ public class Index extends AppCompatActivity {
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
         return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // your code.
     }
 }
